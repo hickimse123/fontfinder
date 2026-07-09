@@ -42,3 +42,9 @@ Proje tamamen istemci tarafında (Client-Side) çalışır, dosyalarınız hiçb
 
 > 💾 **İnternetsiz (Çevrimdışı) kullanmak için direkt bilgisayarınıza indirin:**  
 > **[index.html Dosyasını Direkt İndir (Sağ Tıkla -> Farklı Kaydet)](https://raw.githubusercontent.com/hickimse123/fontfinder/main/index.html)**
+
+---
+
+*Sevgiyle üretildi.*
+
+Created with 🚀 by **Hic Kimse**
