@@ -50,3 +50,4 @@ Proje tamamen istemci tarafında (Client-Side) çalışır, dosyalarınız hiçb
 *Sevgiyle üretildi.*
 
 Created with 🚀 by **Hic Kimse**
+Proje fikri için teşekkürler **Carbon Scans**
