@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://tools.carbonscans.com/fonts/parser -->
+<html lang="tr" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Bulucu</title>
+<script>window.isEmbeddedInNextcloud = false;</script>
+<script src="./Font Parser_files/ag-psd.min.js.indir" defer=""></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #181818;
+    --bg-hover: #1f1f1f;
+    --bg-selected: #262600;
+    --text-primary: #f5f5f5;
+    --text-secondary: #9a9a9a;
+    --border-color: #2a2a2a;
+    --accent: #ecec00;
+    --accent-contrast: #0a0a0a;
+    --accent-soft: rgba(236, 236, 0, 0.10);
+    --accent-glow: rgba(236, 236, 0, 0.35);
+    --danger: #ff5c5c;
+    --success: #3ddc84;
+    --muted-info: #8fa1b8;
+}
+
+html[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #101010;
+    --bg-hover: #1a1a1a;
+    --bg-selected: #232300;
+    --text-primary: #ffffff;
+    --text-secondary: #8c8c8c;
+    --border-color: #232323;
+    --accent: #ecec00;
+    --accent-contrast: #0a0a0a;
+    --accent-soft: rgba(236, 236, 0, 0.08);
+    --accent-glow: rgba(236, 236, 0, 0.45);
+    --danger: #ff6b6b;
+    --success: #4caf50;
+    --muted-info: #8fa1b8;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(24px) scale(0.96); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes toastOut {
+    from { opacity: 1; transform: translateX(0) scale(1); }
+    to { opacity: 0; transform: translateX(24px) scale(0.96); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-soft); }
+    50% { box-shadow: 0 0 0 6px var(--accent-soft); }
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(236, 236, 0, 0.06), transparent 45%),
+        radial-gradient(circle at 100% 20%, rgba(236, 236, 0, 0.04), transparent 40%),
+        var(--bg-primary);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    background: var(--bg-secondary);
+    color: var(--accent);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+.theme-toggle:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+    .theme-toggle {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+.type-key-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    animation: fadeSlideUp 0.4s ease both;
+}
+
+@media (max-width: 480px) {
+    .type-key-container {
+        /* Fixed bottom-left placement overlaps page content once the
+           viewport is too narrow to leave a side margin - drop it into
+           normal document flow instead so it just pushes content down. */
+        position: static;
+        width: calc(100% - 24px);
+        /* Top margin clears the fixed theme-toggle button (top: 12px,
+           36px tall), which would otherwise sit on top of this box now
+           that it's back in normal document flow. */
+        margin: 56px 12px 16px;
+        padding: 10px 12px;
+    }
+
+    .type-key-item {
+        white-space: normal;
+    }
+}
+
+.type-key-title {
+    font-family: 'Chakra Petch', 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.type-key-item {
+    display: flex;
+    align-items: center;
+    padding: 3px 0;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.type-key-item code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--bg-hover);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-right: 10px;
+    min-width: 32px;
+    text-align: center;
+    color: var(--accent);
+}
+
+.type-key-item span {
+    color: var(--text-secondary);
+}
+
+.page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 20px 40px;
+}
+
+.page-header {
+    margin-bottom: 10px;
+    animation: fadeSlideUp 0.5s ease both;
+}
+
+.page-header h1 {
+    font-family: 'Chakra Petch', 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-shadow: 0 0 18px var(--accent-glow);
+}
+
+.page-header h1 span {
+    color: var(--accent);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.series-gate {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    animation: fadeSlideUp 0.5s ease both;
+}
+
+/* Overrides .status-line's margin-top - it was collapsing with (and
+   dominating) .series-gate's margin-bottom above, so bumping that alone
+   never changed the visible gap to the drop zone. */
+#seriesStatusLine {
+    margin-top: 16px;
+}
+
+.series-gate label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.series-gate select {
+    flex: 1;
+    max-width: 360px;
+    padding: 10px 40px 10px 14px;
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ecec00' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.series-gate select:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--accent);
+}
+
+.series-gate select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    outline: none;
+}
+
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    padding: 56px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeSlideUp 0.55s ease both;
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-zone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--accent-soft), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.drop-zone:hover {
+    border-color: var(--accent);
+    background: var(--bg-hover);
+}
+
+.drop-zone:hover::before {
+    opacity: 1;
+}
+
+.drop-zone.dragover {
+    border-color: var(--accent);
+    border-style: solid;
+    background: var(--accent-soft);
+    box-shadow: 0 0 0 4px var(--accent-soft), 0 0 30px var(--accent-glow);
+    transform: scale(1.01);
+}
+
+.drop-zone .drop-icon {
+    color: var(--accent);
+    margin-bottom: 14px;
+    opacity: 0.9;
+}
+
+.drop-zone .drop-title {
+    font-family: 'Chakra Petch', 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.drop-zone .drop-subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.browse-hint {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.status-line {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    min-height: 16px;
+    transition: color 0.3s ease;
+}
+
+.status-line.error {
+    color: var(--danger);
+}
+
+.results {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.layer-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    padding: 16px;
+    transition: all 0.3s ease;
+    animation: fadeSlideUp 0.35s ease both;
+}
+
+.layer-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.layer-card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.layer-name {
+    font-family: 'Chakra Petch', 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.occurrence-count {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.example-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.example-chip {
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: var(--bg-hover);
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.example-chip.more {
+    font-style: italic;
+}
+
+.example-label {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px 14px;
+    margin-bottom: 10px;
+}
+
+.settings-item label {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+}
+
+.settings-item .value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.settings-item .value.is-default {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.settings-string-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-string-row code {
+    flex: 1;
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    color: var(--text-primary);
+}
+
+.copy-btn {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.copy-btn.copied {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border-color: var(--accent);
+}
+
+.empty-note {
+    padding: 20px 14px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeSlideUp 0.35s ease both;
+}
+
+.status-badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    min-width: 72px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.status-badge.status-found,
+.status-badge.status-added {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.status-badge.status-missing {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.resolution-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.resolution-card-top .skip-btn {
+    margin-left: auto;
+}
+
+.card-divider {
+    border-top: 1px solid var(--border-color);
+    margin: 10px 0;
+}
+
+.type-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 12px;
+    column-gap: 4px;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.type-checkbox-grid label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+}
+
+.type-checkbox-grid input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+.resolution-card.is-skipped {
+    opacity: 0.5;
+}
+
+.resolution-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.skip-btn {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skip-btn:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.skip-btn.active {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border-color: var(--accent);
+}
+
+.missing-note {
+    font-size: 11px;
+    color: var(--danger);
+}
+
+.add-to-series-row {
+    margin-top: 16px;
+}
+
+/* Overrides the shared .results margin-top (24px) just for this list, since
+   that class is also used by #results elsewhere with different spacing needs. */
+#resolutionCards {
+    margin-top: 10px;
+}
+
+#addToSeriesBtn {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: 1px solid var(--accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#addToSeriesBtn:hover:not(:disabled) {
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+#addToSeriesBtn:disabled {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+.warning-note {
+    font-size: 11px;
+    color: var(--danger);
+    margin-top: 8px;
+    min-height: 14px;
+}
+
+.success-note {
+    font-size: 11px;
+    color: var(--success);
+    margin-top: 8px;
+}
+
+.success-note:empty {
+    margin-top: 0;
+}
+
+.export-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.export-row button {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.export-row button:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ---- Toast notifications ---- */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 340px;
+}
+
+.toast {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: toastIn 0.3s ease both;
+}
+
+.toast.toast-error {
+    border-left-color: var(--danger);
+}
+
+.toast.toast-success {
+    border-left-color: var(--success);
+}
+
+.toast.toast-closing {
+    animation: toastOut 0.25s ease both;
+}
+
+@media (max-width: 480px) {
+    .toast-container {
+        left: 12px;
+        right: 12px;
+        max-width: none;
+    }
+}
+
+/* ---- Footer ---- */
+.site-footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    color: var(--text-secondary);
+}
+
+.site-footer .footer-accent {
+    color: var(--accent);
+    font-weight: 600;
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Karanlık modu değiştir">☀</button>
+
+<div class="type-key-container hidden" id="typeKeyContainer">
+    <div class="type-key-title">Tür Anahtarı</div>
+    <div class="type-key-item"><code>""</code><span>Konuşma Balonu</span></div>
+    <div class="type-key-item"><code>()</code><span>Düşünce Balonu</span></div>
+    <div class="type-key-item"><code>//</code><span>Balon/anlatımın devamı</span></div>
+    <div class="type-key-item"><code>[]</code><span>Kutu içinde anlatım veya metin</span></div>
+    <div class="type-key-item"><code>ON</code><span>Kutu dışı anlatım</span></div>
+    <div class="type-key-item"><code>OT</code><span>Balonların dışında/kenarında metin</span></div>
+    <div class="type-key-item"><code>ST</code><span>Küçük/el yazısı metin</span></div>
+    <div class="type-key-item"><code>SP</code><span>Özel balon</span></div>
+    <div class="type-key-item"><code>SK</code><span>Sivri (dikenli) balon</span></div>
+    <div class="type-key-item"><code>SB</code><span>Bağırma balonu</span></div>
+    <div class="type-key-item"><code>BT</code><span>Büyük metin</span></div>
+    <div class="type-key-item"><code>SFX</code><span>Ses efektleri</span></div>
+    <div class="type-key-item"><code>MT</code><span>Ekran metni</span></div>
+    <div class="type-key-item"><code>TL/N</code><span>Çevirmen notu</span></div>
+</div>
+
+<div class="page">
+    <div class="page-header">
+        <h1>FONT <span>BULUCU</span></h1>
+    </div>
+
+    <div class="series-gate hidden" id="seriesGate">
+        <label for="seriesSelect">Seri</label>
+        <select id="seriesSelect">
+            <option value="">Bir seri seçin…</option>
+        </select>
+    </div>
+    <div class="status-line" id="seriesStatusLine"></div>
+
+    <div class="" id="dropZoneWrapper">
+        <div class="drop-zone" id="dropZone" data-mode="psd">
+            <svg class="drop-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"></path><path d="M6 10l6-6 6 6"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+            <div class="drop-title" id="dropTitle">PSD dosyalarını buraya sürükleyin</div>
+            <div class="drop-subtitle" id="dropSubtitle">veya <span class="browse-hint">gözatmak için tıklayın</span></div>
+            <input type="file" id="fileInput" accept=".psd" multiple="" style="display: none;">
+            <input type="file" id="fontFileInput" accept=".ttf,.otf,.woff,.woff2,.ttc" multiple="" style="display: none;">
+        </div>
+    </div>
+    <div class="status-line" id="statusLine"></div>
+
+    <div class="empty-note hidden" id="alreadyInSeriesNote"></div>
+
+    <div class="export-row hidden" id="standaloneExportRow">
+        <button id="exportTyperStandaloneBtn">TypeR JSON Dışa Aktar</button>
+        <button id="exportListStandaloneBtn">Font Listesini Dışa Aktar</button>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <div class="hidden" id="resolutionSection">
+        <div class="export-row hidden" id="exportButtonsRow">
+            <button id="exportTyperBtn">TypeR Dışa Aktar</button>
+            <button id="exportListBtn">Listeyi Dışa Aktar</button>
+        </div>
+        <div class="add-to-series-row">
+            <button id="addToSeriesBtn" disabled="">Seriye Ekle</button>
+            <div class="warning-note" id="addToSeriesWarning"></div>
+            <div class="success-note" id="addToSeriesSuccess"></div>
+        </div>
+        <div class="results" id="resolutionCards"></div>
+    </div>
+
+    <footer class="site-footer">by <span class="footer-accent">Hiç Kimse</span></footer>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ---- DOM refs ----
+const dropZone = document.getElementById('dropZone');
+const dropZoneWrapper = document.getElementById('dropZoneWrapper');
+const dropTitle = document.getElementById('dropTitle');
+const dropSubtitle = document.getElementById('dropSubtitle');
+const fileInput = document.getElementById('fileInput');
+const fontFileInput = document.getElementById('fontFileInput');
+const statusLine = document.getElementById('statusLine');
+const results = document.getElementById('results');
+
+const typeKeyContainer = document.getElementById('typeKeyContainer');
+const seriesGate = document.getElementById('seriesGate');
+const seriesSelect = document.getElementById('seriesSelect');
+const seriesStatusLine = document.getElementById('seriesStatusLine');
+const alreadyInSeriesNote = document.getElementById('alreadyInSeriesNote');
+const resolutionSection = document.getElementById('resolutionSection');
+const resolutionCards = document.getElementById('resolutionCards');
+const addToSeriesBtn = document.getElementById('addToSeriesBtn');
+const addToSeriesWarning = document.getElementById('addToSeriesWarning');
+const addToSeriesSuccess = document.getElementById('addToSeriesSuccess');
+const exportButtonsRow = document.getElementById('exportButtonsRow');
+const exportTyperBtn = document.getElementById('exportTyperBtn');
+const exportListBtn = document.getElementById('exportListBtn');
+const standaloneExportRow = document.getElementById('standaloneExportRow');
+const exportTyperStandaloneBtn = document.getElementById('exportTyperStandaloneBtn');
+const exportListStandaloneBtn = document.getElementById('exportListStandaloneBtn');
+const toastContainer = document.getElementById('toastContainer');
+
+// ---- Toast notifications (replaces window.alert for user-facing messages) ----
+function showToast(message, type) {
+    const toast = document.createElement('div');
+    toast.className = 'toast' + (type === 'error' ? ' toast-error' : type === 'success' ? ' toast-success' : '');
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.add('toast-closing');
+        setTimeout(() => toast.remove(), 260);
+    }, 4500);
+}
+
+// ---- Constants ----
+const FONT_CAPS_LABELS = { 0: 'Normal', 1: 'Küçük Büyük Harf', 2: 'Tüm Büyük Harf' };
+const TYPE_VALUES = ['""', '()', '//', '[]', 'ON', 'OT', 'ST', 'SP', 'SK', 'SB', 'BT', 'SFX', 'MT', 'TL/N'];
+const TYPE_DISPLAY = { '""': '""', '()': '( )', '[]': '[ ]' };
+const FONT_FILE_EXTENSIONS = ['ttf', 'otf', 'woff', 'woff2', 'ttc'];
+// Never real translated content when embedded in Nextcloud - excluded from
+// parsing entirely in that mode (standalone mode is unaffected).
+const IGNORED_FONTS_WHEN_EMBEDDED = ['AvenirNextCondensed-DemiBold'];
+
+// ---- Series / Font Viewer integration state ----
+const seriesState = {
+    embedded: window.isEmbeddedInNextcloud === true,
+    selectedSeries: null,
+    seriesFonts: [],
+    resolutionGroups: [],
+    addedThisSession: false,
+};
+let lastGroups = [];
+let cardUidCounter = 0;
+function nextCardUid() {
+    cardUidCounter += 1;
+    return cardUidCounter;
+}
+
+function pct(fraction, fallback) {
+    if (fraction == null) return fallback;
+    return Math.round(fraction * 100);
+}
+
+function round2(n) {
+    return Math.round(n * 100) / 100;
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    // innerHTML only entity-encodes &, <, > in text-node position - it leaves
+    // quote characters bare, which is fine for text content but corrupts any
+    // caller that (like renderResolutionCard's type checkboxes) interpolates
+    // the result into an HTML attribute value.
+    return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function normalizeFontName(name) {
+    // Also strip a trailing "regular" - single-style fonts frequently embed a
+    // PostScript name that's just the family (e.g. "TragicMarker"), while PSDs
+    // reference Photoshop's own "Family-Style" convention ("TragicMarker-Regular")
+    // regardless of what the font file itself actually contains.
+    return String(name || '').toLowerCase().replace(/[-_ ]/g, '').replace(/regular$/, '');
+}
+
+function generateUid() {
+    const timestampBase36 = Date.now().toString(36);
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let randomStr = '';
+    for (let i = 0; i < 6; i++) {
+        randomStr += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return timestampBase36 + randomStr;
+}
+
+// Straight JS port of typer-settings-utils.php's computeWordSpacingRange().
+function computeWordSpacingRangeJs(desiredPercent) {
+    const defaultMinimum = 0.80000001192093;
+    const defaultMaximum = 1.33000004291534;
+    const desired = desiredPercent / 100;
+    let minimum = defaultMinimum;
+    let maximum = defaultMaximum;
+    if (desired < defaultMinimum) {
+        minimum = desired;
+    } else if (desired > defaultMaximum) {
+        maximum = desired;
+    }
+    return { minimumWordSpacing: minimum, desiredWordSpacing: desired, maximumWordSpacing: maximum };
+}
+
+function downloadBlob(data, mime, filename) {
+    const blob = new Blob([data], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Mirrors the settings-string vocabulary used by Series Fonts (fonts/index.php,
+// fonts/admin-api.php) so the output can be pasted straight into that panel.
+// NOTE: these tokens (Faux Bold, hScale, fontCaps: allCaps, etc.) are kept in
+// their original English form on purpose - they are a data format shared with
+// another system, not display text, so translating them would break pasting.
+function buildSettingsString(style, paragraphStyle) {
+    const parts = [];
+
+    if (style.fauxBold) parts.push('Faux Bold');
+    if (style.fauxItalic) parts.push('Faux Italic');
+
+    const hScale = pct(style.horizontalScale, 100);
+    if (hScale !== 100) parts.push(`hScale: ${hScale}%`);
+
+    const vScale = pct(style.verticalScale, 100);
+    if (vScale !== 100) parts.push(`vScale: ${vScale}%`);
+
+    const tracking = style.tracking || 0;
+    if (tracking !== 0) parts.push(`tracking: ${tracking}`);
+
+    if (style.autoLeading !== false) {
+        const leadingPct = Math.round((paragraphStyle?.autoLeading ?? 1.2) * 100);
+        if (leadingPct !== 120) parts.push(`leading: ${leadingPct}%`);
+    } else if (style.leading != null) {
+        parts.push(`leading: ${round2(style.leading)}`);
+    }
+
+    const fontCapsLabel = FONT_CAPS_LABELS[style.fontCaps || 0];
+    if (fontCapsLabel && fontCapsLabel !== 'Normal') {
+        parts.push(`fontCaps: ${fontCapsLabel === 'Tüm Büyük Harf' ? 'allCaps' : 'smallCaps'}`);
+    }
+
+    if (style.autoKerning === false && style.kerning) {
+        parts.push(`kerning: ${style.kerning}`);
+    }
+
+    if (style.ligatures) parts.push('contextualLigatures');
+
+    if (paragraphStyle && Array.isArray(paragraphStyle.wordSpacing)) {
+        const desired = Math.round(paragraphStyle.wordSpacing[1] * 100);
+        if (desired !== 100) parts.push(`wordSpacing: ${desired}%`);
+    }
+
+    return parts.join(', ');
+}
+
+function settingsFields(style, paragraphStyle) {
+    const hScale = pct(style.horizontalScale, 100);
+    const vScale = pct(style.verticalScale, 100);
+    const tracking = style.tracking || 0;
+    const fontCaps = FONT_CAPS_LABELS[style.fontCaps || 0] || 'Normal';
+
+    let kerningLabel, kerningDefault;
+    if (style.autoKerning === false) {
+        kerningLabel = `Manuel: ${style.kerning || 0}`;
+        kerningDefault = false;
+    } else {
+        kerningLabel = 'Otomatik (Metrik/Optik)';
+        kerningDefault = true;
+    }
+
+    let leadingLabel, leadingDefault;
+    if (style.autoLeading !== false) {
+        const leadingPct = Math.round((paragraphStyle?.autoLeading ?? 1.2) * 100);
+        leadingLabel = `${leadingPct}% (otomatik)`;
+        leadingDefault = leadingPct === 120;
+    } else {
+        leadingLabel = `${round2(style.leading ?? 0)}pt (manuel)`;
+        leadingDefault = false;
+    }
+
+    let wordSpacingLabel = '100%';
+    let wordSpacingDefault = true;
+    if (paragraphStyle && Array.isArray(paragraphStyle.wordSpacing)) {
+        const desired = Math.round(paragraphStyle.wordSpacing[1] * 100);
+        wordSpacingLabel = `${desired}%`;
+        wordSpacingDefault = desired === 100;
+    }
+
+    return [
+        { label: 'Yapay Kalın', value: style.fauxBold ? 'Evet' : 'Hayır', isDefault: !style.fauxBold },
+        { label: 'Yapay İtalik', value: style.fauxItalic ? 'Evet' : 'Hayır', isDefault: !style.fauxItalic },
+        { label: 'fi (Bitişik Harf)', value: style.ligatures ? 'Açık' : 'Kapalı', isDefault: !style.ligatures },
+        { label: 'Kerning', value: kerningLabel, isDefault: kerningDefault },
+        { label: 'Harf Büyüklüğü', value: fontCaps, isDefault: fontCaps === 'Normal' },
+        { label: 'Dikey Ölçek %', value: `${vScale}%`, isDefault: vScale === 100 },
+        { label: 'Yatay Ölçek %', value: `${hScale}%`, isDefault: hScale === 100 },
+        { label: 'Harf Aralığı', value: `${tracking}`, isDefault: tracking === 0 },
+        { label: 'Satır Aralığı %', value: leadingLabel, isDefault: leadingDefault },
+        { label: 'Kelime Boşluğu %', value: wordSpacingLabel, isDefault: wordSpacingDefault },
+    ];
+}
+
+// Every text run across every dropped file/page, flat. Re-bucketed by font
+// name and resolved fresh on every render (see resolveFontGroup) so results
+// stay correct as more files are dropped in.
+const globalRuns = [];
+let totalTextLayers = 0;
+const processedFileNames = [];
+
+const NOISE_THRESHOLD = 0.10;
+
+function bump(map, key) {
+    map.set(key, (map.get(key) || 0) + 1);
+}
+
+// Resolves one field's votes across a font's runs to a single value. A value
+// only "wins" outright if it's the most common one AND there aren't 3+
+// distinct non-default values each carrying a non-trivial (>= 10%) share of
+// the occurrences - that many genuinely different values means the field
+// isn't a stable trait of the font, so it's dropped (falls back to default)
+// rather than guessing. Values below the noise threshold don't count toward
+// that 3+ check, so a couple of one-off outlier bubbles don't block a
+// dominant value from winning.
+function resolveVotes(map, total, defaultValue) {
+    const entries = Array.from(map.entries());
+    const significantNonDefault = entries.filter(([v, c]) => v !== defaultValue && (c / total) >= NOISE_THRESHOLD);
+    if (significantNonDefault.length >= 3) return defaultValue;
+
+    let best = defaultValue;
+    let bestCount = -1;
+    for (const [value, count] of entries) {
+        if (count > bestCount) {
+            best = value;
+            bestCount = count;
+        }
+    }
+    return best;
+}
+
+// Builds one representative style for a font by resolving every Character
+// Settings field independently across all of that font's runs.
+function resolveFontGroup(fontName, runs) {
+    const total = runs.length;
+
+    const fauxBoldVotes = new Map();
+    const fauxItalicVotes = new Map();
+    const hScaleVotes = new Map();
+    const vScaleVotes = new Map();
+    const trackingVotes = new Map();
+    const leadingVotes = new Map();
+    const fontCapsVotes = new Map();
+    const kerningVotes = new Map();
+    const ligaturesVotes = new Map();
+    const wordSpacingVotes = new Map();
+
+    for (const run of runs) {
+        const s = run.style;
+        const p = run.paragraphStyle;
+
+        bump(fauxBoldVotes, !!s.fauxBold);
+        bump(fauxItalicVotes, !!s.fauxItalic);
+        bump(hScaleVotes, pct(s.horizontalScale, 100));
+        bump(vScaleVotes, pct(s.verticalScale, 100));
+        bump(trackingVotes, s.tracking || 0);
+        bump(fontCapsVotes, s.fontCaps || 0);
+        bump(kerningVotes, s.autoKerning === false ? ('manual:' + (s.kerning || 0)) : 'auto');
+        bump(ligaturesVotes, !!s.ligatures);
+
+        if (s.autoLeading !== false) {
+            bump(leadingVotes, 'auto:' + Math.round((p?.autoLeading ?? 1.2) * 100));
+        } else {
+            bump(leadingVotes, 'manual:' + round2(s.leading ?? 0));
+        }
+
+        let wordSpacing = 100;
+        if (p && Array.isArray(p.wordSpacing)) wordSpacing = Math.round(p.wordSpacing[1] * 100);
+        bump(wordSpacingVotes, wordSpacing);
+    }
+
+    const leadingKey = resolveVotes(leadingVotes, total, 'auto:120');
+    const kerningKey = resolveVotes(kerningVotes, total, 'auto');
+
+    const style = {
+        font: { name: fontName },
+        fauxBold: resolveVotes(fauxBoldVotes, total, false),
+        fauxItalic: resolveVotes(fauxItalicVotes, total, false),
+        horizontalScale: resolveVotes(hScaleVotes, total, 100) / 100,
+        verticalScale: resolveVotes(vScaleVotes, total, 100) / 100,
+        tracking: resolveVotes(trackingVotes, total, 0),
+        fontCaps: resolveVotes(fontCapsVotes, total, 0),
+        ligatures: resolveVotes(ligaturesVotes, total, false),
+    };
+
+    // Manual (absolute) leading values from the PSD are ignored entirely -
+    // treated as the default 120% auto leading rather than surfaced as-is.
+    style.autoLeading = true;
+
+    if (kerningKey === 'auto') {
+        style.autoKerning = true;
+    } else {
+        style.autoKerning = false;
+        style.kerning = parseFloat(kerningKey.split(':')[1]);
+    }
+
+    const paragraphStyle = {
+        autoLeading: leadingKey.startsWith('auto:') ? parseFloat(leadingKey.split(':')[1]) / 100 : 1.2,
+        wordSpacing: [0.8, resolveVotes(wordSpacingVotes, total, 100) / 100, 1.33],
+    };
+
+    // One example per distinct source file (first occurrence in that file),
+    // so a font's card shows exactly which files it came from plus a
+    // representative snippet, instead of a bare file list.
+    const exampleByFile = new Map();
+    for (const run of runs) {
+        if (!exampleByFile.has(run.fileName)) exampleByFile.set(run.fileName, run.text);
+    }
+    const examples = Array.from(exampleByFile.entries())
+        .map(([fileName, text]) => ({ fileName, text }))
+        .sort((a, b) => a.fileName.localeCompare(b.fileName));
+
+    return {
+        fontName,
+        style,
+        paragraphStyle,
+        count: total,
+        examples,
+    };
+}
+
+// Shared by both the plain result cards and the series resolution cards -
+// one chip per source file, capped so a font used across dozens of pages
+// doesn't blow up the card.
+function renderExamplesHtml(examples) {
+    const maxExamples = 4;
+    const shownExamples = examples.slice(0, maxExamples);
+    const remaining = examples.length - shownExamples.length;
+    return `
+        <span class="example-label">Örnekler:</span>
+        <div class="example-list">
+            ${shownExamples.map(e => `<div class="example-chip">${escapeHtml(e.fileName)} [${escapeHtml(e.text)}]</div>`).join('')}
+            ${remaining > 0 ? `<div class="example-chip more">+${remaining} tane daha</div>` : ''}
+        </div>
+    `;
+}
+
+function renderStyleGroup(group) {
+    const fields = settingsFields(group.style, group.paragraphStyle);
+    const settingsString = buildSettingsString(group.style, group.paragraphStyle);
+    const fieldsHtml = fields.map(f => `
+        <div class="settings-item">
+            <label>${escapeHtml(f.label)}</label>
+            <div class="value${f.isDefault ? ' is-default' : ''}">${escapeHtml(f.value)}</div>
+        </div>
+    `).join('');
+
+    const isUnknown = group.fontName === '(unknown font)';
+
+    return `
+        <div class="layer-card">
+            <div class="layer-card-top">
+                <span class="layer-name">${isUnknown ? 'Bilinmeyen font' : escapeHtml(group.fontName)}</span>
+                <span class="occurrence-count">${group.count} kullanım</span>
+            </div>
+            ${renderExamplesHtml(group.examples)}
+            <div class="settings-grid">${fieldsHtml}</div>
+            <div class="settings-string-row">
+                <code>${escapeHtml(settingsString || '(sadece varsayılanlar)')}</code>
+                <button class="copy-btn" data-copy="${escapeHtml(settingsString)}">Kopyala</button>
+            </div>
+        </div>
+    `;
+}
+
+function computeCurrentGroups() {
+    const byFont = new Map();
+    for (const run of globalRuns) {
+        if (!byFont.has(run.fontName)) byFont.set(run.fontName, []);
+        byFont.get(run.fontName).push(run);
+    }
+
+    const groups = Array.from(byFont.entries()).map(([fontName, runs]) => resolveFontGroup(fontName, runs));
+
+    // Alphabetical, but unknown fonts always sort last.
+    groups.sort((a, b) => {
+        const aUnknown = a.fontName === '(unknown font)';
+        const bUnknown = b.fontName === '(unknown font)';
+        if (aUnknown !== bUnknown) return aUnknown ? 1 : -1;
+        return a.fontName.localeCompare(b.fontName);
+    });
+
+    return groups;
+}
+
+function summaryText(groups) {
+    return `${groups.length} farklı font, ${totalTextLayers} metin katmanında, ${processedFileNames.length} dosya içinde bulundu (${processedFileNames.join(', ')})`;
+}
+
+function renderResults() {
+    const groups = computeCurrentGroups();
+    lastGroups = groups;
+
+    typeKeyContainer.classList.toggle('hidden', !seriesState.embedded || groups.length === 0);
+
+    if (seriesState.embedded) {
+        const embeddedGroups = groups.filter(g => !IGNORED_FONTS_WHEN_EMBEDDED.includes(g.fontName));
+        if (embeddedGroups.length === 0) {
+            results.innerHTML = '<div class="empty-note">Henüz metin katmanı bulunamadı.</div>';
+            resolutionSection.classList.add('hidden');
+            alreadyInSeriesNote.classList.add('hidden');
+        } else {
+            results.innerHTML = '';
+            if (seriesState.selectedSeries) {
+                refreshSeriesResolution(embeddedGroups);
+            }
+        }
+        statusLine.classList.remove('error');
+        statusLine.textContent = summaryText(embeddedGroups);
+        return;
+    }
+
+    results.innerHTML = groups.length === 0
+        ? '<div class="empty-note">Henüz metin katmanı bulunamadı.</div>'
+        : groups.map(renderStyleGroup).join('');
+
+    statusLine.classList.remove('error');
+    statusLine.textContent = summaryText(groups);
+    renderStandaloneExportButtons(groups);
+}
+
+// Flattens every text run in a document into globalRuns. fileName/text are
+// carried along so unknown-font runs can point back at their source instead
+// of showing a meaningless "(unknown font)" card with no context.
+function addLayersToGroups(textLayers, fileName) {
+    for (const entry of textLayers) {
+        const textData = entry.layer.text;
+        const fullText = (textData.text || '').replace(/\r/g, ' ').trim();
+        const runs = [];
+
+        if (textData.styleRuns && textData.styleRuns.length > 1) {
+            // ag-psd only stores a run's OWN style when it differs from the
+            // rest of the layer's runs - fields every run agrees on (often
+            // including the font itself) get hoisted onto textData.style and
+            // stripped from each run. Merge the base back in so an unset
+            // per-run field falls back to the shared value instead of
+            // reading as empty/unknown.
+            let offset = 0;
+            for (const run of textData.styleRuns) {
+                const text = (textData.text || '').slice(offset, offset + run.length).replace(/\r/g, ' ').trim();
+                runs.push({ style: { ...(textData.style || {}), ...(run.style || {}) }, text });
+                offset += run.length;
+            }
+        } else {
+            runs.push({ style: textData.style || {}, text: fullText });
+        }
+
+        for (const run of runs) {
+            // Photoshop always appends a trailing zero-width "insertion point"
+            // style run after the last character. Runs with no real
+            // characters left after trimming don't represent an on-page font
+            // and are skipped.
+            if (!run.text) continue;
+
+            // Photoshop silently auto-substitutes a fallback font for
+            // individual characters the base font's glyph set doesn't cover
+            // (e.g. a trailing "!"/"..." or a stylized "ー" elongation mark
+            // in a non-CJK font) while leaving the rest of the run in the
+            // real, typesetter-chosen font. That substitute is genuinely
+            // encoded per-character in the PSD (e.g. "KozGoPr6N-Regular") -
+            // not an ag-psd decode artifact - but it was never actually
+            // chosen by anyone. Every real font in this app's PSDs is
+            // `script: 0` (Roman); Photoshop flags these auto-substituted
+            // runs with a non-zero `script`, which is used to tell them
+            // apart from an intentional font choice.
+            if (run.style.font && run.style.font.script) continue;
+
+            const fontName = (run.style.font && run.style.font.name) || '(unknown font)';
+            globalRuns.push({ fontName, style: run.style, paragraphStyle: textData.paragraphStyle, fileName, text: run.text });
+        }
+    }
+}
+
+// Skips layers with the Photoshop visibility (eye icon) toggle off, and
+// anything nested inside a hidden group - a layer's own `hidden` flag is
+// independent of its parent's, so a visible child inside a hidden group
+// still needs to inherit that hiddenness to be excluded. Hidden text layers
+// (reference/alt/draft copies left in the PSD) would otherwise surface fonts
+// that were never actually applied to anything on the visible canvas.
+function collectTextLayers(layers, out, parentHidden) {
+    if (!layers) return;
+    for (const layer of layers) {
+        const isHidden = !!layer.hidden || !!parentHidden;
+        if (layer.text && !isHidden) out.push({ layer });
+        if (layer.children) collectTextLayers(layer.children, out, isHidden);
+    }
+}
+
+async function processFile(file) {
+    try {
+        const buffer = await file.arrayBuffer();
+        const psd = window.agPsd.readPsd(buffer, {
+            skipLayerImageData: true,
+            skipCompositeImageData: true,
+            skipThumbnail: true,
+        });
+
+        const textLayers = [];
+        collectTextLayers(psd.children, textLayers);
+
+        addLayersToGroups(textLayers, file.name);
+        totalTextLayers += textLayers.length;
+        processedFileNames.push(file.name);
+    } catch (err) {
+        console.error('Failed to parse PSD', err);
+        processedFileNames.push(`${file.name} (başarısız: ${err.message || err})`);
+    }
+}
+
+async function handleFiles(fileList) {
+    const files = Array.from(fileList).filter(f => /\.psd$/i.test(f.name));
+    if (files.length === 0) {
+        statusLine.textContent = 'Lütfen bir .psd dosyası sürükleyin.';
+        statusLine.classList.add('error');
+        return;
+    }
+    statusLine.textContent = 'Ayrıştırılıyor…';
+    for (const file of files) {
+        await processFile(file);
+    }
+    renderResults();
+}
+
+// ==================================================================
+// Series / Font Viewer integration (embedded-in-Nextcloud path only)
+// ==================================================================
+
+async function loadSeriesListIntoDropdown() {
+    try {
+        const resp = await fetch('admin-api.php?action=getSeriesList');
+        const data = await resp.json();
+        if (data.success && data.series) {
+            seriesSelect.innerHTML = '<option value="">Bir seri seçin&hellip;</option>' +
+                data.series.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
+        }
+    } catch (err) {
+        seriesStatusLine.textContent = 'Seri listesi yüklenirken hata oluştu: ' + err.message;
+        seriesStatusLine.classList.add('error');
+    }
+}
+
+async function fetchSeriesFonts(series) {
+    const resp = await fetch(`admin-api.php?action=getSeriesFonts&series=${encodeURIComponent(series)}`);
+    const data = await resp.json();
+    if (!data.success) {
+        throw new Error(data.message || 'Seri fontları yüklenemedi');
+    }
+    seriesState.seriesFonts = data.fonts || [];
+    return seriesState.seriesFonts;
+}
+
+seriesSelect.addEventListener('change', async () => {
+    const series = seriesSelect.value;
+
+    // Changing series invalidates any in-progress resolution choices - they
+    // were only meaningful relative to the series they were made under.
+    seriesState.selectedSeries = series || null;
+    seriesState.resolutionGroups = [];
+    seriesState.addedThisSession = false;
+    resolutionCards.innerHTML = '';
+    resolutionSection.classList.add('hidden');
+    alreadyInSeriesNote.classList.add('hidden');
+    exportButtonsRow.classList.add('hidden');
+    seriesStatusLine.classList.remove('error');
+    seriesStatusLine.textContent = '';
+    addToSeriesSuccess.textContent = '';
+
+    if (!series) {
+        dropZoneWrapper.classList.add('hidden');
+        seriesState.seriesFonts = [];
+        return;
+    }
+
+    try {
+        await fetchSeriesFonts(series);
+        dropZoneWrapper.classList.remove('hidden');
+        updateDropZoneMode();
+        if (globalRuns.length > 0) {
+            refreshSeriesResolution(computeCurrentGroups());
+        }
+    } catch (err) {
+        seriesStatusLine.textContent = 'Seri fontları yüklenirken hata oluştu: ' + err.message;
+        seriesStatusLine.classList.add('error');
+    }
+});
+
+// Partitions parsed font groups against the selected series' existing font
+// list, appends resolution cards for anything genuinely new (existing cards
+// are left untouched so in-progress edits/uploads aren't wiped out), and
+// batch-checks new entries against the shared font repository.
+async function refreshSeriesResolution(groups) {
+    const exactSet = new Set(seriesState.seriesFonts.map(f => f.font));
+    const fuzzySet = new Set(seriesState.seriesFonts.map(f => normalizeFontName(f.font)));
+
+    const needsResolution = groups.filter(group =>
+        !(exactSet.has(group.fontName) || fuzzySet.has(normalizeFontName(group.fontName)))
+    );
+
+    if (needsResolution.length === 0) {
+        resolutionSection.classList.add('hidden');
+        resolutionCards.innerHTML = '';
+        seriesState.resolutionGroups = [];
+        alreadyInSeriesNote.classList.remove('hidden');
+        alreadyInSeriesNote.textContent = `Ayrıştırılan ${groups.length} fontun tümü zaten "${seriesState.selectedSeries}" font listesinde.`;
+        updateAddToSeriesGating();
+        return;
+    }
+
+    alreadyInSeriesNote.classList.add('hidden');
+    resolutionSection.classList.remove('hidden');
+
+    const existingFontNames = new Set(seriesState.resolutionGroups.map(g => g.fontName));
+    const freshGroups = [];
+
+    for (const group of needsResolution) {
+        if (existingFontNames.has(group.fontName)) continue;
+        const entry = {
+            uid: nextCardUid(),
+            fontName: group.fontName,
+            resolvedFont: null,
+            style: group.style,
+            paragraphStyle: group.paragraphStyle,
+            count: group.count,
+            examples: group.examples,
+            resolutionStatus: 'checking',
+            skipped: false,
+            added: false,
+            uploadedFilename: null,
+        };
+        seriesState.resolutionGroups.push(entry);
+        freshGroups.push(entry);
+        appendResolutionCard(entry);
+    }
+
+    if (freshGroups.length > 0) {
+        try {
+            const resp = await fetch('admin-api.php?action=checkFontFiles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ series: seriesState.selectedSeries, fonts: freshGroups.map(g => g.fontName) }),
+            });
+            const data = await resp.json();
+            const foundSet = new Set(data.found || []);
+            const resolvedNames = data.resolvedNames || {};
+            freshGroups.forEach(g => {
+                g.resolutionStatus = foundSet.has(g.fontName) ? 'found' : 'missing';
+                // A fuzzy match (e.g. "Fingerfood-Regular" -> "FingerfoodRegular")
+                // resolves under a differently-spelled name - addFont only matches
+                // exactly, so the commit step must use this canonical name, not
+                // the raw name parsed from the PSD.
+                if (resolvedNames[g.fontName]) g.resolvedFont = resolvedNames[g.fontName];
+                updateCardStatusUI(g);
+            });
+        } catch (err) {
+            freshGroups.forEach(g => {
+                g.resolutionStatus = 'missing';
+                updateCardStatusUI(g);
+            });
+            seriesStatusLine.textContent = 'Font deposu kontrol edilirken hata oluştu: ' + err.message;
+            seriesStatusLine.classList.add('error');
+        }
+    }
+
+    reorderResolutionCards();
+    updateDropZoneMode();
+    updateAddToSeriesGating();
+}
+
+// Styles are shown read-only in resolution cards (same field list/formatting
+// as the standard .layer-card display) - only the type-tag checkboxes are
+// editable, matching the "just list the styles like normal" requirement.
+function renderResolutionCard(entry) {
+    const fields = settingsFields(entry.style, entry.paragraphStyle);
+    const fieldsHtml = fields.map(f => `
+        <div class="settings-item">
+            <label>${escapeHtml(f.label)}</label>
+            <div class="value${f.isDefault ? ' is-default' : ''}">${escapeHtml(f.value)}</div>
+        </div>
+    `).join('');
+
+    const typeCheckboxesHtml = TYPE_VALUES.map(t => `
+        <label><input type="checkbox" class="rc-type" value="${escapeHtml(t)}"> ${escapeHtml(TYPE_DISPLAY[t] || t)}</label>
+    `).join('');
+
+    return `
+        <div class="layer-card resolution-card" data-group-uid="${entry.uid}">
+            <div class="resolution-card-top">
+                <span class="status-badge" data-role="badge"></span>
+                <span class="layer-name">${escapeHtml(entry.fontName)}</span>
+                <span class="occurrence-count">${entry.count} kullanım</span>
+                <button type="button" class="skip-btn" data-action="skip">Atla</button>
+            </div>
+            ${renderExamplesHtml(entry.examples)}
+            <div class="settings-grid">${fieldsHtml}</div>
+            <div class="card-divider"></div>
+            <div class="type-checkbox-grid">${typeCheckboxesHtml}</div>
+            <div class="resolution-card-actions">
+                <span class="missing-note hidden" data-role="missing-note">Font depoda bulunamadı. Çözmek için yukarıdan font yükleyin.</span>
+            </div>
+        </div>
+    `;
+}
+
+function appendResolutionCard(entry) {
+    resolutionCards.insertAdjacentHTML('beforeend', renderResolutionCard(entry));
+    updateCardStatusUI(entry);
+}
+
+// Missing-from-repository fonts are listed first so they're the most visible
+// call to action; ties keep their existing (alphabetical) relative order.
+const STATUS_SORT_ORDER = { missing: 0, checking: 1, found: 2, 'resolved-uploaded': 2 };
+function reorderResolutionCards() {
+    const sorted = [...seriesState.resolutionGroups].sort((a, b) => {
+        const ao = STATUS_SORT_ORDER[a.resolutionStatus] ?? 3;
+        const bo = STATUS_SORT_ORDER[b.resolutionStatus] ?? 3;
+        return ao - bo;
+    });
+    sorted.forEach(g => {
+        const el = resolutionCards.querySelector(`[data-group-uid="${g.uid}"]`);
+        if (el) resolutionCards.appendChild(el);
+    });
+}
+
+function updateCardStatusUI(entry) {
+    const cardEl = resolutionCards.querySelector(`[data-group-uid="${entry.uid}"]`);
+    if (!cardEl) return;
+    const badge = cardEl.querySelector('[data-role="badge"]');
+    const missingNote = cardEl.querySelector('[data-role="missing-note"]');
+    const skipBtn = cardEl.querySelector('[data-action="skip"]');
+
+    let label = '';
+    let cls = '';
+    if (entry.added) {
+        label = 'Eklendi';
+        cls = 'status-added';
+    } else if (entry.skipped) {
+        label = 'Atlandı';
+    } else if (entry.resolutionStatus === 'checking') {
+        label = 'Kontrol ediliyor…';
+    } else if (entry.resolutionStatus === 'found') {
+        label = 'Bulundu';
+        cls = 'status-found';
+    } else if (entry.resolutionStatus === 'missing') {
+        label = 'Eksik';
+        cls = 'status-missing';
+    } else if (entry.resolutionStatus === 'resolved-uploaded') {
+        label = 'Bulundu';
+        cls = 'status-found';
+    }
+
+    badge.textContent = label;
+    badge.className = 'status-badge' + (cls ? ' ' + cls : '');
+
+    missingNote.classList.toggle('hidden', entry.added || entry.skipped || entry.resolutionStatus !== 'missing');
+    skipBtn.textContent = entry.skipped ? 'Atlamayı İptal Et' : 'Atla';
+    skipBtn.classList.toggle('active', entry.skipped);
+    cardEl.classList.toggle('is-skipped', entry.skipped);
+
+    cardEl.querySelectorAll('input, select').forEach(el => {
+        el.disabled = !!entry.added;
+    });
+}
+
+resolutionCards.addEventListener('click', (e) => {
+    const skipBtn = e.target.closest('[data-action="skip"]');
+    if (!skipBtn) return;
+    const cardEl = skipBtn.closest('.resolution-card');
+    const uid = Number(cardEl.dataset.groupUid);
+    const entry = seriesState.resolutionGroups.find(g => g.uid === uid);
+    if (entry && !entry.added) {
+        entry.skipped = !entry.skipped;
+        updateCardStatusUI(entry);
+        updateDropZoneMode();
+        updateAddToSeriesGating();
+    }
+});
+
+resolutionCards.addEventListener('change', (e) => {
+    if (e.target.classList.contains('rc-type')) {
+        updateAddToSeriesGating();
+    }
+});
+
+function updateAddToSeriesGating() {
+    const active = seriesState.resolutionGroups.filter(g => !g.added);
+    const nonSkipped = active.filter(g => !g.skipped);
+
+    if (nonSkipped.length === 0) {
+        addToSeriesBtn.disabled = true;
+        addToSeriesWarning.textContent = '';
+        return;
+    }
+
+    let needsFile = 0;
+    let needsType = 0;
+    nonSkipped.forEach(g => {
+        const resolved = g.resolutionStatus === 'found' || g.resolutionStatus === 'resolved-uploaded';
+        if (!resolved) needsFile++;
+        const cardEl = resolutionCards.querySelector(`[data-group-uid="${g.uid}"]`);
+        const hasType = cardEl && cardEl.querySelectorAll('.rc-type:checked').length > 0;
+        if (resolved && !hasType) needsType++;
+    });
+
+    const canSubmit = needsFile === 0 && needsType === 0;
+    addToSeriesBtn.disabled = !canSubmit;
+
+    if (canSubmit) {
+        addToSeriesWarning.textContent = '';
+    } else {
+        const msgs = [];
+        if (needsFile > 0) msgs.push(`${needsFile} font için hâlâ dosya gerekiyor (yükleyin veya atlayın)`);
+        if (needsType > 0) msgs.push(`${needsType} fontta Tür seçimi eksik`);
+        addToSeriesWarning.textContent = msgs.join(' ve ') + '.';
+    }
+}
+
+// Drop zone flips into "upload font files" mode while any resolution card is
+// still missing from the repository, and back to PSD mode once nothing is -
+// so the user can keep dropping more PSDs later in the same session.
+function updateDropZoneMode() {
+    if (!seriesState.embedded) return;
+    const hasPendingMissing = seriesState.resolutionGroups.some(g => !g.added && !g.skipped && g.resolutionStatus === 'missing');
+    if (hasPendingMissing) {
+        dropZone.dataset.mode = 'fonts';
+        dropTitle.textContent = 'Eksik fontları çözmek için font dosyalarını buraya sürükleyin';
+        dropSubtitle.innerHTML = 'veya <span class="browse-hint">gözatmak için tıklayın</span>';
+    } else {
+        dropZone.dataset.mode = 'psd';
+        dropTitle.textContent = 'PSD dosyalarını buraya sürükleyin';
+        dropSubtitle.innerHTML = 'veya <span class="browse-hint">gözatmak için tıklayın</span>';
+    }
+}
+
+async function handleFontFileUpload(fileList) {
+    const files = Array.from(fileList).filter(f => FONT_FILE_EXTENSIONS.some(ext => f.name.toLowerCase().endsWith('.' + ext)));
+    if (files.length === 0) {
+        seriesStatusLine.textContent = 'Lütfen bir font dosyası sürükleyin (.ttf, .otf, .woff, .woff2, .ttc).';
+        seriesStatusLine.classList.add('error');
+        return;
+    }
+    seriesStatusLine.classList.remove('error');
+
+    let matchedCount = 0;
+    let unmatchedCount = 0;
+
+    for (const file of files) {
+        seriesStatusLine.textContent = `${file.name} yükleniyor…`;
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('series', seriesState.selectedSeries);
+            const resp = await fetch('admin-api.php?action=uploadFontFile', { method: 'POST', body: formData });
+            const result = await resp.json();
+
+            if (!result.success) {
+                seriesStatusLine.textContent = `${file.name} yüklenemedi: ${result.error || 'Bilinmeyen hata'}`;
+                seriesStatusLine.classList.add('error');
+                continue;
+            }
+
+            for (const face of (result.faces || [])) {
+                const match = seriesState.resolutionGroups.find(g =>
+                    !g.added && g.resolutionStatus === 'missing' &&
+                    (g.fontName === face.font || normalizeFontName(g.fontName) === normalizeFontName(face.font))
+                );
+                if (match) {
+                    match.resolutionStatus = 'resolved-uploaded';
+                    match.resolvedFont = face.font;
+                    match.uploadedFilename = result.filename;
+                    updateCardStatusUI(match);
+                    matchedCount++;
+                } else {
+                    unmatchedCount++;
+                }
+            }
+        } catch (err) {
+            seriesStatusLine.textContent = `${file.name} yüklenirken hata oluştu: ${err.message}`;
+            seriesStatusLine.classList.add('error');
+        }
+    }
+
+    let summary = `${files.length} dosya yüklendi, ${matchedCount} font çözümlendi.`;
+    if (unmatchedCount > 0) summary += ` +${unmatchedCount} ek yazı tipi yüklendi ancak bu grup için gerekli değildi.`;
+    seriesStatusLine.textContent = summary;
+
+    reorderResolutionCards();
+    updateDropZoneMode();
+    updateAddToSeriesGating();
+}
+
+async function onAddToSeriesClick() {
+    const toCommit = seriesState.resolutionGroups.filter(g => !g.added && !g.skipped);
+    if (toCommit.length === 0) return;
+
+    // Locked in for the whole commit - seriesState.selectedSeries can change
+    // out from under this async function if the user switches the dropdown
+    // mid-commit, which previously caused later fonts in the same commit to
+    // be sent to the newly-selected series instead of the one this commit
+    // was actually started for. The dropdown is also disabled below as a
+    // second line of defense so this can't be triggered via normal use.
+    const targetSeries = seriesState.selectedSeries;
+
+    addToSeriesBtn.disabled = true;
+    seriesSelect.disabled = true;
+    const originalText = addToSeriesBtn.textContent;
+    addToSeriesBtn.textContent = 'Ekleniyor…';
+    seriesStatusLine.classList.remove('error');
+    seriesStatusLine.textContent = 'Fontlar seriye ekleniyor…';
+    addToSeriesSuccess.textContent = '';
+
+    // Fonts that were already in the repository (not freshly uploaded this
+    // session) still need their file copied into this series' typer + fonts
+    // folder before addFont will accept them.
+    const foundNotUploaded = toCommit.filter(g => g.resolutionStatus === 'found');
+    if (foundNotUploaded.length > 0) {
+        try {
+            await fetch('admin-api.php?action=checkFontFiles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ series: targetSeries, fonts: foundNotUploaded.map(g => g.fontName) }),
+            });
+        } catch (err) {
+            console.error('checkFontFiles error before commit:', err);
+        }
+    }
+
+    // Sequential, not parallel - addFont synchronously rewrites the whole
+    // on-disk TypeR JSON per call, so parallel calls would race each other.
+    const errors = [];
+    let addedCount = 0;
+    for (const group of toCommit) {
+        const cardEl = resolutionCards.querySelector(`[data-group-uid="${group.uid}"]`);
+        const selectedTypes = Array.from(cardEl.querySelectorAll('.rc-type:checked')).map(cb => cb.value);
+        const settings = buildSettingsString(group.style, group.paragraphStyle);
+
+        try {
+            const resp = await fetch('admin-api.php?action=addFont', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    series: targetSeries,
+                    type: selectedTypes.join(' '),
+                    font: group.resolvedFont || group.fontName,
+                    settings,
+                }),
+            });
+            const result = await resp.json();
+            if (result.success) {
+                group.added = true;
+                addedCount++;
+                updateCardStatusUI(group);
+                cardEl.remove();
+            } else {
+                errors.push(`${group.fontName}: ${result.error || 'Bilinmeyen hata'}`);
+            }
+        } catch (err) {
+            errors.push(`${group.fontName}: ${err.message}`);
+        }
+    }
+
+    seriesSelect.disabled = false;
+
+    // Only refresh the on-screen state if the user is still looking at the
+    // series this commit was for - if they've since switched away, that
+    // other series' state was already freshly loaded by the change handler.
+    if (addedCount > 0 && seriesState.selectedSeries === targetSeries) {
+        seriesState.addedThisSession = true;
+        try {
+            await fetchSeriesFonts(targetSeries);
+            await refreshSeriesResolution(computeCurrentGroups());
+        } catch (err) {
+            console.error('Error refreshing series fonts after commit:', err);
+        }
+        exportButtonsRow.classList.remove('hidden');
+    }
+
+    addToSeriesBtn.textContent = originalText;
+
+    if (errors.length > 0) {
+        seriesStatusLine.textContent = `${addedCount} font eklendi. ${errors.length} tanesi başarısız oldu: ${errors.join('; ')}`;
+        seriesStatusLine.classList.add('error');
+        if (addedCount > 0) addToSeriesSuccess.textContent = `${addedCount} font "${targetSeries}" serisine eklendi.`;
+    } else {
+        seriesStatusLine.textContent = `${addedCount} font "${targetSeries}" serisine eklendi.`;
+        addToSeriesSuccess.textContent = `${addedCount} font "${targetSeries}" serisine eklendi.`;
+    }
+
+    updateAddToSeriesGating();
+    updateDropZoneMode();
+}
+
+addToSeriesBtn.addEventListener('click', onAddToSeriesClick);
+
+exportTyperBtn.addEventListener('click', async () => {
+    if (!seriesState.selectedSeries) return;
+    try {
+        const resp = await fetch(`admin-api.php?action=exportTyperFile&series=${encodeURIComponent(seriesState.selectedSeries)}`);
+        const result = await resp.json();
+        if (!result.success) {
+            showToast(result.error || 'TypeR dosyası dışa aktarılamadı.', 'error');
+            return;
+        }
+        downloadBlob(result.data, 'application/json', `Typer_${seriesState.selectedSeries.replace(/[^a-zA-Z0-9_-]/g, '_')}.json`);
+    } catch (err) {
+        showToast('TypeR dışa aktarılırken hata oluştu: ' + err.message, 'error');
+    }
+});
+
+exportListBtn.addEventListener('click', async () => {
+    if (!seriesState.selectedSeries) return;
+    try {
+        const resp = await fetch('admin-api.php?action=exportFontList', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `series=${encodeURIComponent(seriesState.selectedSeries)}`,
+        });
+        const result = await resp.json();
+        if (!result.success) {
+            showToast('Liste dışa aktarılırken hata oluştu: ' + (result.error || 'Bilinmeyen hata'), 'error');
+            return;
+        }
+        downloadBlob(result.data, 'text/plain', `Fonts_${seriesState.selectedSeries.replace(/[^a-zA-Z0-9_-]/g, '_')}.txt`);
+    } catch (err) {
+        showToast('Liste dışa aktarılırken hata oluştu: ' + err.message, 'error');
+    }
+});
+
+// ==================================================================
+// Standalone export (non-embedded only) - pure client-side, no series/DB
+// ==================================================================
+
+function renderStandaloneExportButtons(groups) {
+    standaloneExportRow.classList.toggle('hidden', groups.length === 0);
+}
+
+// Builds a TypeR JSON directly from each group's already-resolved ag-psd-
+// shaped style object. A mapping table to TypeR's shape (percentages,
+// syntheticBold, etc.) is unavoidable since ag-psd's shape uses fractions/
+// fauxBold - this mirrors generateAndSaveTyperFile() in admin-api.php.
+function buildStandaloneTyperJson(groups) {
+    const folderId = generateUid();
+    const folders = [{ id: folderId, name: 'Standalone Export', parentId: null, order: 0 }];
+    const currentTime = Date.now();
+
+    const styles = groups.map(group => {
+        const style = group.style;
+        const paragraphStyle = group.paragraphStyle;
+
+        const textStyle = {
+            fontPostScriptName: group.fontName,
+            fontName: group.fontName,
+            size: 12,
+            color: { red: 0, green: 0, blue: 0 },
+            horizontalScale: pct(style.horizontalScale, 100),
+            verticalScale: pct(style.verticalScale, 100),
+            tracking: style.tracking || 0,
+            baselineShift: 0,
+        };
+        if (style.fauxBold) textStyle.syntheticBold = true;
+        if (style.fauxItalic) textStyle.syntheticItalic = true;
+
+        const fontCapsLabel = style.fontCaps === 2 ? 'allCaps' : (style.fontCaps === 1 ? 'smallCaps' : null);
+        if (fontCapsLabel === 'allCaps') {
+            textStyle.fontCaps = 'allCaps';
+            textStyle.allCaps = true;
+        } else if (fontCapsLabel === 'smallCaps') {
+            textStyle.fontCaps = 'smallCaps';
+            textStyle.smallCaps = true;
+        }
+
+        if (style.autoKerning === false && style.kerning) textStyle.kerning = style.kerning;
+        if (style.ligatures) textStyle.contextualLigatures = true;
+
+        const pStyle = { alignment: 'center', hangingRoman: false, autoHyphenate: true };
+        if (style.autoLeading !== false) {
+            pStyle.autoLeadingAmount = Math.round((paragraphStyle?.autoLeading ?? 1.2) * 100);
+        } else if (style.leading != null) {
+            pStyle.leading = round2(style.leading);
+        }
+
+        let wordSpacingPct = 100;
+        if (paragraphStyle && Array.isArray(paragraphStyle.wordSpacing)) {
+            wordSpacingPct = Math.round(paragraphStyle.wordSpacing[1] * 100);
+        }
+        if (wordSpacingPct !== 100) {
+            const range = computeWordSpacingRangeJs(wordSpacingPct);
+            pStyle.minimumWordSpacing = range.minimumWordSpacing;
+            pStyle.desiredWordSpacing = range.desiredWordSpacing;
+            pStyle.maximumWordSpacing = range.maximumWordSpacing;
+        }
+
+        return {
+            id: generateUid(),
+            name: group.fontName,
+            folder: folderId,
+            textProps: {
+                layerText: {
+                    textGridding: 'none',
+                    orientation: 'horizontal',
+                    antiAlias: 'antiAliasStrong',
+                    textStyleRange: [{ from: 0, to: 1, textStyle }],
+                    paragraphStyleRange: [{ from: 0, to: 1, paragraphStyle: pStyle }],
+                    kerningRange: [],
+                },
+                typeUnit: 'pointsUnit',
+            },
+            prefixes: [],
+            prefixColor: '#808080',
+            edited: currentTime,
+            chosen: false,
+            selected: false,
+            hasStroke: false,
+            strokeEnabled: false,
+        };
+    });
+
+    return { folders, styles };
+}
+
+// Plain-text analog of exportFontList's output, without type-grouping (no
+// series/type context exists in standalone mode).
+function buildStandaloneFontListText(groups) {
+    let output = '';
+    for (const group of groups) {
+        output += group.fontName + ':\n';
+        const settingsStr = buildSettingsString(group.style, group.paragraphStyle);
+        if (settingsStr) {
+            settingsStr.split(', ').forEach(part => {
+                output += '    ' + part.trim() + '\n';
+            });
+        }
+        output += '\n';
+    }
+    return output;
+}
+
+exportTyperStandaloneBtn.addEventListener('click', () => {
+    if (lastGroups.length === 0) return;
+    downloadBlob(JSON.stringify(buildStandaloneTyperJson(lastGroups), null, 2), 'application/json', 'PSD_Fonts_TypeR.json');
+});
+
+exportListStandaloneBtn.addEventListener('click', () => {
+    if (lastGroups.length === 0) return;
+    downloadBlob(buildStandaloneFontListText(lastGroups), 'text/plain', 'PSD_Fonts_List.txt');
+});
+
+// ---- Event wiring ----
+
+dropZone.addEventListener('click', () => {
+    (dropZone.dataset.mode === 'fonts' ? fontFileInput : fileInput).click();
+});
+fileInput.addEventListener('change', () => {
+    handleFiles(fileInput.files);
+    fileInput.value = '';
+});
+fontFileInput.addEventListener('change', () => {
+    handleFontFileUpload(fontFileInput.files);
+    fontFileInput.value = '';
+});
+
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+});
+dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('dragover');
+});
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    if (dropZone.dataset.mode === 'fonts') {
+        handleFontFileUpload(e.dataTransfer.files);
+    } else {
+        handleFiles(e.dataTransfer.files);
+    }
+});
+
+results.addEventListener('click', (e) => {
+    const btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    const text = btn.getAttribute('data-copy') || '';
+    navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        const original = btn.textContent;
+        btn.textContent = 'Kopyalandı!';
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = original;
+        }, 1200);
+    });
+});
+
+// ---- Init ----
+if (seriesState.embedded) {
+    seriesGate.classList.remove('hidden');
+    dropZoneWrapper.classList.add('hidden');
+    loadSeriesListIntoDropdown();
+} else {
+    dropZoneWrapper.classList.remove('hidden');
+}
+
+// ---- Theme toggle ----
+const themeToggle = document.getElementById('themeToggle');
+const THEME_KEY = 'parser-theme';
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+}
+
+const storedTheme = localStorage.getItem(THEME_KEY);
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+
+themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem(THEME_KEY, next);
+});
+</script>
+
+
+</body></html>
