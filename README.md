@@ -42,6 +42,7 @@ Proje tamamen istemci tarafında (Client-Side) çalışır, dosyalarınız hiçb
 
 > 💾 **İnternetsiz (Çevrimdışı) kullanmak için direkt bilgisayarınıza indirin:**  
 > **[index.html Dosyasını Direkt İndir (Sağ Tıkla -> Farklı Kaydet)](https://raw.githubusercontent.com/hickimse123/fontfinder/main/index.html)**
+
 > **[script.js Dosyasını Direkt İndir (Sağ Tıkla -> Farklı Kaydet)](https://raw.githubusercontent.com/hickimse123/fontfinder/main/script.js)**
 
 ---
